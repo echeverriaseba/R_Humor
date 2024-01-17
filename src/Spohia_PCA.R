@@ -2,7 +2,6 @@
 ############# PCA Tests - Sophia's Data ##############
 
 library(vegan)
-install.packages("vioplot")
 library(vioplot)
 
 # Note: vegan package has issues with missing values, because it deletes the rows.
@@ -12,7 +11,7 @@ Nutrients <- read.csv("data/1_Nutrients.csv", fileEncoding="latin1", na.strings=
 
 # 1. Data exploration ####
 
-## 1.1. Outlier identification
+## 1.1. Outlier identification 
 
 variables <- names(Nutrients) # we start workig with the Nutrients dataframe
 print(variables)
@@ -33,16 +32,22 @@ for (P in variables) {hist(Nutrients[,P], main = P, brakes = 6)
 
 ## 1.2. Data transformation ####
 
-Nut <- NULL # creating an empty object, then to be filled. This will then be our new transformed dataframe
+Nut <- NULL # creating an empty object, then to be filled with the loop below. This will then be our new transformed dataframe.
 
-for (P in variables) {log.P <- log(Nutrients[,P])
-                      Name <- paste0("log.",P)
+for (P in variables) {log.P <- log(Nutrients[,P]) # creates a vector for each variable with all values log transformed.
+                      Name <- paste0("log.",P) # adds "log." as a prefix to each column's name
                       hist(log.P, main = Name, xlab = Name)
                       boxplot(log.P, main =Name, xlab = Name)
                       vioplot(log.P, main = Name, xlab = Name)
-                      COL <- colnames(Nut)
+                      COL <- colnames(Nut) # because when defining log.P, a vector was created, and column neames is lost. This recover them.
                       Nut <- cbind(Nut, log.P) # matrix, not dataframe, only has numbers
-                      colnames(Nut) <- c(COL, Name) # instead of names(), 
+                      colnames(Nut) <- c(COL, Name) # instead of names(), because names() works for dataframes and Nut is a matrix.
 }
 
+# 2. Building up a PCA ####
+
+PCA <- rda(Nut, scale = TRUE) # Correspondence Analysis and Redundancy Analysis. Scale = TRUE: Defines Correlations instead of Covariance.
+biplot(PCA) # prints the PCA as a plot. Plots in red variables and in black the sites.
+print(PCA) # returns the Eigenvalues
+summary(PCA) # Information about the Importance of components, look for: how to interpret this table.
 
