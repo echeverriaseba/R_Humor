@@ -1,0 +1,26 @@
+Site,Site.Name,River,Coord.Y,Coord.X,Elevation,Date,Temp.C,DOS,DOS.mgL,Conduct,SPC,pH,Aquatic.state.num,Aquatic.state,QBR,Invasive.spe,Visual.pollution,Turbid.water,Odor,Black.stones,Channel,Erosion,Hydraulic.works,Roads,Plastic.waste,Comment pollution,Forestry,Agriculture (please specify),Animal husbandry,Industry,Residential,Infrastructure,Recreational use,Notes
+P001_1,Toll del Forn (ACA),Barranc de la Foredada,41.25351,0.93646,483.44,04/07/2023,21.9,88.3,7.73,564,600,8.14,2,Eurheic,80,0,0,0,0,1,0,0,1,0,0,"black sediment, water flow meter",1,0,0,0,0,0,1,extensive forestry
+P002_1,Porta Priorat,Riu de Siurana,41.2342,0.89402,395.52,04/07/2023,20.4,79.5,7.13,672,737,7.96,2,Eurheic,80,0,0,0,0,0,0,0,0,1,0,cut trees/ vegetation on riverbench,0,1,0,0,0,1,0,bridge
+P003_1,Punt Montsant,Riu de Montsant,41.17792,0.74787,120.71,05/07/2023,23.1,56,4.75,1065,1106,7.82,4,Arheic,80,0,0,1,0,0,0,0,0,0,0,,1,0,1,0,0,0,0,"Olive farming, stables for animal husbandary"
+P004_1,El Lloar,Riu de Montsant,41.18962,0.75905,150.85,05/07/2023,23.3,52.3,4.44,1086,1123,7.47,3,Oligorheic,80,1,0,1,0,0,0,0,0,0,0,lots of sediments,0,0,0,0,0,1,0,Road up the riverbench
+P005_1,Vilella Baixa,Riu de Montsant,41.21946,0.76244,193.3,05/07/2023,24.4,47.4,4,793,803,7.73,4,Arheic,55,1,1,1,0,0,0,0,0,0,0,,0,1,0,0,1,1,0,"Vinery, village, roads on bridge and both sides"
+P006_1,Porrera Dam,Riu de Cortiella,41.18953,0.86087,310.83,06/07/2023,23.6,45.9,3.9,683,702,7.69,4,Arheic,25,0,0,1,0,1,0,0,1,1,0,"OM, a bit anoxic, dam",0,1,0,0,0,1,1,"Vinery, road
+swimming"
+P007_1,Poboleda (Punt ACA-IBICAT),Riu de Siruana,41.23206,0.83969,315.57,06/07/2023,22.3,47.9,4.09,963,1015,7.78,4,Arheic,70,1,0,1,0,1,0,0,0,1,0,"Road on right side, extratcion tubes, black sediment",0,1,0,0,1,1,0,"Vineyards, fruits, Poboleda town, unpaved road, waste water treatment plants dowmstrea,"
+P008_1,Punt TRivers Siurana,Riu de Siruana,41.23376,0.87693,378.66,06/07/2023,20.3,797,7.18,757,831,7.97,3,Oligorheic,80,0,0,0,0,1,0,0,0,1,0,"a bit anoxic, bridge with paved road",0,1,0,0,1,1,0,"Vineyards, road, house"
+P009_1,Montsant Margalef 1 (down),Riu de Montsant,41.28894,0.75767,389.58,07/07/2023,22.9,73.8,6.4,486,506,7.84,3,Oligorheic,45,1,1,0,0,0,0,0,1,1,0,,0,1,0,0,0,1,1,"Olive trees, road on right side"
+P010_1,Montsant Margalef 2 (up),Riu de Montsant,41.28965,0.76222,397.73,07/07/2023,21.8,46.6,4.07,481,512,7.8,3,Oligorheic,45,1,0,0,0,0,0,0,1,1,1,"unpaved road, plastic waste, horseshit",0,1,1,0,0,1,1,"Fruit trees, horses, road, used for swimming etc. "
+P011_1,Cadolles Fondes,Riu de Montsant,41.31641,0.8339,540.71,10/07/2023,21.7,58.5,5.12,642,685,7.78,3,Oligorheic,95,0,0,0,0,0,0,0,0,0,0,,0,0,0,0,0,0,1,Natural park: hiking and swimming?
+P012_1,Punt TRivers Montsant/ Ulldemolins,Riu de Montsant,41.32291,0.85527,559.39,10/07/2023,18.5,46.3,4.33,651,743,4.42,2,Eurheic,75,0,0,0,0,1,0,0,0,0,1,,0,1,0,0,0,0,1,"Fruit trees, water extraction, Animals in stables upstream"
+P013_1,Pont Vell Cabacés (Montsant),Riu de Montsant,41.24385,0.70045,276.76,11/07/2023,24.7,58.5,4.82,528,530,5.05,4,Arheic,80,1,0,1,0,0,0,0,0,0,0,bridge but no impact,1,1,0,0,0,0,1,"Tourism, bridge (no impact)"
+P014_1,Riu Arboli,Riu d'Arbolì,41.23569,0.93709,651.03,11/07/2023,17.9,18.7,1.77,1020,1179,4.54,4,Arheic,75,0,0,0,0,1,0,0,0,0,1,,0,1,0,0,0,0,1,"Fruit trees, water extraction, Animals in stables upstream"
+P015_1,Barranc de la Vall,Barranc de la Vall,41.07713,0.81785,305.54,12/07/2023,15.4,85.6,8.53,404.7,495,5.22,3,Oligorheic,95,0,0,0,0,0,0,0,1,1,0,100% water extraction,1,0,0,0,0,0,1,Hiking routes
+P016_1,Riu de Marçà (La Pallissa),Riu de Marçà,41.11825,0.81211,259.73,12/07/2023,24.6,20.6,1.69,690,695,6.54,4,Arheic,80,0,0,0,0,0,0,0,0,0,1,,0,1,0,0,0,0,1,"Receational areas, fruit trees"
+P017_1,Estudi AUBE inici 1 (up),Riu de Siurana,41.14771,0.7264,93.16,19/07/2023,27.8,50.93,50.3,1172,1112,7.54,3,Oligorheic,75,1,1,1,0,1,0,0,0,0,0,"especially in shallow upstream part los of particels in the water, some black sediments",1,1,0,0,0,0,1,"Pine treens, vinery"
+P018_1,Estudi Aube 2 (down),Riu de Siurana,41.14673,0.72605,82.96,19/07/2023,27.2,48.2,3.82,1158,1110,7.54,3,Oligorheic,30,0,0,0,0,0,0,0,1,0,1,,1,1,0,0,0,0,1,"Pine trees (right), Vinery (left)"
+P019_1,Lake Siurana,Riu de Siurana,41.25109,0.91436,446.07,19/07/2023,25.4,83,6.8,655,651,8.15,,,,2,,,,,,,,,1,,,,,,,,1,Fishing
+P020_1,Barranc del Gorg,Barranc del Gorg,41.26594,0.97427,644.04,02/08/2023,17.4,88.3,8.34,645,752,7.92,2,Eurheic,95,0,0,0,0,0,0,0,0,0,0,,0,0,0,0,0,0,1,"Recreational area/ Swimming, biking, hiking, motorcross"
+P021_1,La Febro,Barranc de la Foradada,41.2737,0.99242,707.92,02/08/2023,19.7,23.5,7.23,895,996,7.59,4,Arheic,75,0,0,0,0,0,0,0,0,1,0,,1,0,0,0,0,1,1,"Hiking area, farm (sheep/ chicken upstream)"
+P022_1,Panta de Margalef,Riu de Montsant,41.30052,0.79034,441.02,02/08/2023,27.7,74.5,5.84,478.6,454.9,8.09,,,0,2,,,,,,,,,1,,,,,,,,1,Climbing
+P023_1,Guiamets,Barranc de la Vall,41.09676,0.75763,165,02/08/2023,28.1,89.1,7.02,528,499,8.33,,,0,2,,,,,,,,,1,,,,,,,,1,"Fishing
+previously kayaking"
