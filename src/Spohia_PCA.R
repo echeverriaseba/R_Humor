@@ -34,6 +34,8 @@ for (P in variables) {hist(Nutrients[,P], main = P, brakes = 6)
 
 Nut <- NULL # creating an empty object, then to be filled with the loop below. This will then be our new transformed dataframe.
 
+pdf("outputs/Sophia/Sophia_nuts_dataExploration.pdf")
+
 for (P in variables) {log.P <- log(Nutrients[,P]) # creates a vector for each variable with all values log transformed.
                       Name <- paste0("log.",P) # adds "log." as a prefix to each column's name
                       hist(log.P, main = Name, xlab = Name)
@@ -44,10 +46,18 @@ for (P in variables) {log.P <- log(Nutrients[,P]) # creates a vector for each va
                       colnames(Nut) <- c(COL, Name) # instead of names(), because names() works for dataframes and Nut is a matrix.
 }
 
+dev.off()
+
 # 2. Building up a PCA ####
 
 PCA <- rda(Nut, scale = TRUE) # Correspondence Analysis and Redundancy Analysis. Scale = TRUE: Defines Correlations instead of Covariance.
+
+pdf("outputs/Sophia/Sophia_PCA.pdf")
+
 biplot(PCA) # prints the PCA as a plot. Plots in red variables and in black the sites.
+
+dev.off()
+
 print(PCA) # returns the Eigenvalues
 summary(PCA) # Information about the Importance of components, look for: how to interpret this table.
 
