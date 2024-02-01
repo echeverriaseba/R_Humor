@@ -4,6 +4,8 @@
 library(vegan)
 library(vioplot)
 
+# Meeting 17.01.2024 - Initial PCA work ####
+
 # Note: vegan package has issues with missing values, because it deletes the rows.
 
 Sites <- read.csv("data/1_Sites.csv", fileEncoding="latin1", na.strings=c("","NA"))
@@ -60,4 +62,37 @@ dev.off()
 
 print(PCA) # returns the Eigenvalues
 summary(PCA) # Information about the Importance of components, look for: how to interpret this table.
+
+
+# Meeting: 01.02.2024 - Including factors to PCA ####
+
+## We use Invasive species as an example:
+
+print(names(PCA)) #To access to all the stuff that has the PCA, the summary doesn't give you the same information
+PCA[1] #Para decirle cual de todas esas cosas quieres que te muestre, if you ask for the result of "CA" give you all the scores but is also in the summary of the PCA. You can use the names but it is better to use the name of the function
+PCA[8]
+PCA$CA$u[,c(1,2)]
+PLOT<-cbind(sites,PCA$CA$u[,c(1,2)])
+PLOT$River#you need to convert the levels to a factor so there are no longer a text but a factor and then you convert them to a numeric variable so you can order by the number asigned
+as.factor(PLOT$River)
+CALL<-as.numeric(as.factor(PLOT$River))
+plot(PLOT$PC1,PLOT$PC2,col=CALL)
+plot(PLOT$PC1,PLOT$PC2,col=PLOT$Invasive.spe)
+legend(0.2,-0.3,legend=c("non-invasive","invasive"),col=PLOT$Invasive.spe)
+
+# Identifying points in the PCA:
+
+windows(open=TRUE)
+dev.new()
+plot(PLOT$PC1,PLOT$PC2,col=PLOT$Invasive.spe)
+identify(PLOT$PC1,PLOT$PC2,label=PLOT$Invasive.spe)#to identify if its invasive or non-invasive
+plot(PLOT$PC1,PLOT$PC2,col=PLOT$River)
+identify(PLOT$PC1,PLOT$PC2,label=PLOT$River,plot=TRUE)
+
+# Note: When working with plots it works with layers, if you want to give more importance to one object vs another you need to write it in the 
+# correct order printing one layer before another because it creates layers over the one printed before.
+# Basic R plot options: i) plot for scatter plot, ii) histogram for bars, iii) Boxplot
+
+CALL<-PLOT$Invasive.spe+1
+plot(PLOT$PC1,PLOT$PC2,col=CALL)
 
