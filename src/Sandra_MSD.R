@@ -15,7 +15,7 @@ library(tidyverse)
 library(xlsx)
 library(xlsxjars)
 library(rJava)
-library(Rtools)
+# library(Rtools)
 library(readxl)
 library(ggplot2)
 library(sciplot)
@@ -96,23 +96,47 @@ text(PCA, display = "species", cex = 0.7)
 
 # 3. ABUNDANCES information####
 
-#nMDS
+# nMDS:
 
-cell_abundances <- names(all_MA_temporal)
+cell_abundances <- all_MA_temporal
 keep_abundances <- c("Label","Island", "Point","Date","Day", "Month", "Year","Macrophyte", "Gamb_macro", "Fuku_macro", "Ostreop_macro", "Proro_macro", "Coolia_macro")
-cell_abundances <- cell_abundances[cell_abundances %in% keep_abundances]
+cell_abundances <- cell_abundances[names(cell_abundances) %in% keep_abundances]
 
-# 4. R_Humor meeting ####
+# 4. R_Humor meeting - nMDS ####
 # Note: until here this script is Sandra's original. Now onwards it's meeting's work.
+# PCA assumes linear relation between variables, using Pearson. nMDS deals better with communities, doesn't assume these linear relations. It is also common to perform a CA after an nMDS. 
+
+cell_abundances <- cell_abundances[!is.na(cell_abundances$Gamb_macro),]
+
+labels <- c("Gamb_macro", "Fuku_macro", "Ostreop_macro", "Proro_macro", "Coolia_macro")
 
 # gsub() Function: look for characters or names and then replace for new names.
 
-cell_abundances <- gsub("<LOQ", 0, cell_abundances[names(cell_abundances %in% c("Gamb_macro", "Fuku_macro", "Ostreop_macro", 
-                                                                                "Proro_macro", "Coolia_macro"))]) # Replacing all <LOQ for zeros. This could be applied to specific columns as well.
+for (L in labels) {
+  cell_abundances[,L] <- gsub("<LOQ", 0, cell_abundances[,L])
+  cell_abundances[,L] <- gsub("no cuento", NA, cell_abundances[,L])
+  cell_abundances[,L] <- as.numeric(cell_abundances[,L])                          
+} # Replacing all <LOQ for zeros. This could be applied to specific columns as well.
 
+# An nMDS compares communities and species within these communities simultaneously. 
+# First we have to define distances. Euclidean is the most common for this cases, gives same weights to all distances. Others are "dissimilarities" (gives more weight to those species not shared among communities) and "similarities", the other way around. This depends on your objective, for example if we are looking for common patterns of fish species all across Europe then we should use "similarities". If we think species are not homogenously distributed then maybe its better to use dissimilarities to identify what are the differences and sampling points that are different.
 
+# Calculate Euclidean dissimilarity matrix and MSD:
+dis_euc <- vegdist(cell_abundances[,names(cell_abundances) %in% labels], method = "euclidean", binary = FALSE, na.rm = TRUE)
+mds_euc <- metaMDS(na.omit(cell_abundances[, names(cell_abundances) %in% labels]), autotransform = FALSE, distance = "euclidean", na.rm = TRUE, k = 2, trymax = 99)
 
+plot(mds_euc)
 
+PLOT <- cbind(na.omit(cell_abundances[, names(cell_abundances) %in% labels]), mds_euc$points) # making a matrix with our original cell_abundances matrix and adding the scores
+PLOT <- merge(cell_abundances[, !names(cell_abundances) %in% labels], PLOT, by = "row.names")
 
+names(mds_euc)
 
+mds_euc$points # Points are the "scores" of each sampling
+mds_euc$species # With these coordinates ("scores" of species) we can assign species to the red points within the plot. Now we can analyse which are the species most dominant in all sampled communities. 
+
+# Note: now it's possible to go further with a trajectory analysis.
+plot(PLOT$Month)
+plot(PLOT$MDS1, PLOT$Month)
+plot(PLOT$MDS1, PLOT$MDS2, col = PLOT$Month, pch = 19)
 
