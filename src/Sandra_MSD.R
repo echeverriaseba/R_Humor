@@ -58,8 +58,8 @@ all_MA_temporal <- merged_samp_nut_HOBOS_vol_10_OK[merged_samp_nut_HOBOS_vol_10_
 
 ## 1.2. HOBO data: ####
 
-variables_HOBOS<-names(all_MA_temporal)
-keep_HOBOS<-c("Temp_field","Salinity_field","Dis_O2_perc_field","Dis_O2_mg_field","pH_field","DayofAvgTemp","DayofTempSD","DayofTempSEM","DayofTempMax","DayofTempMin",   
+variables_HOBOS <- names(all_MA_temporal)
+keep_HOBOS <- c("Temp_field","Salinity_field","Dis_O2_perc_field","Dis_O2_mg_field","pH_field","DayofAvgTemp","DayofTempSD","DayofTempSEM","DayofTempMax","DayofTempMin",   
               "30TempAvg", "30TempSEM", "30TempSD", "21TempAvg", "21TempSEM", "21TempSD", "14TempAvg", "14TempSEM", "14TempSD", "7TempAvg", "7TempSEM", "7TempSD",
               "DayofAvgLight", "DayofLightSD","DayofLightSEM","DayofLightMax","DayofLightMin","30LightAvg", "30LightSEM", "30LightSD", "21LightAvg", "21LightSEM", "21LightSD", "14LightAvg", 
               "14LightSEM", "14LightSD", "7LightAvg", "7LightSEM", "7LightSD")
@@ -67,7 +67,7 @@ variables_HOBOS<-variables_HOBOS[variables_HOBOS%in%keep_HOBOS]
 
 # Example loop:
 
-pdf("outputs/Sandra/MA temporal_field with HOBOS.pdf")
+# pdf("outputs/Sandra/MA temporal_field with HOBOS.pdf")
 for (P in variables_HOBOS) {
   # Remove rows with NA in the "DayofAvgTemp" column
   filtered_DayofAvgTemp_nona <- all_MA_temporal %>% filter(!is.na(DayofAvgTemp))
@@ -76,7 +76,7 @@ for (P in variables_HOBOS) {
   boxplot(filtered_DayofAvgTemp_nona[, P], main = P, xlab = P)
   vioplot(filtered_DayofAvgTemp_nona[, P], main = P, xlab = P)
 }
-dev.off()
+# dev.off()
 
 # 2. PCA environmentals removing NA rows ####
 
@@ -107,7 +107,8 @@ cell_abundances <- cell_abundances[cell_abundances %in% keep_abundances]
 
 # gsub() Function: look for characters or names and then replace for new names.
 
-cell_abundances <- gsub("<LOQ", 0, cell_abundances) # Replacing all <LOQ for zeros. This could be applied to specific columns as well.
+cell_abundances <- gsub("<LOQ", 0, cell_abundances[names(cell_abundances %in% c("Gamb_macro", "Fuku_macro", "Ostreop_macro", 
+                                                                                "Proro_macro", "Coolia_macro"))]) # Replacing all <LOQ for zeros. This could be applied to specific columns as well.
 
 
 
